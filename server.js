@@ -1,31 +1,30 @@
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
-const hhtp = require('http')
-var app = express()
-const PORT = 3000
+var app = express();
+const PORT = 5000
 
-var peopleData = require('./data/main.json')
 
+
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
 
 app.get('/', (req, res) => {
-    res.render('pages/index', {
+    let peopleData = JSON.parse(fs.readFile('./data/main.json'))
+    res.render('pages/main', {
         people: peopleData,
     })
+    console.log('rendered index page');
 })
 
 
 
 
-app.get('/about', (req, res) => {
-    res.render('pages/about', {
-        people: peopleData,
-    })
+
+app.listen(PORT, () =>{
+    console.log(`listening on port 5000...`);
 })
 
-app.listen(PORT, PORT =>{
-    console.log(`listening on port ${PORT}...`);
-})
+
+//http://localhost:5000/

@@ -1,8 +1,13 @@
 body{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    
+    grid-template-rows: repeat(6, 1fr);
+    background-color: blue;
+    #viewSpace{
+        grid-row: 2 / 6;
+        grid-column: 2 / 9;
+        background-color: red;
+    }
 }
 
 
